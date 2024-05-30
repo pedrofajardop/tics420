@@ -1,0 +1,14 @@
+{
+    "email-address": "Correo electrínico",
+    "password": "Constraseña",
+    "welcome": "Bienvenido",
+    "certifications": "Certificaciones",
+    "menu": "Inicio",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "search": "Buscar",
+    "username":"Usuario",
+    "page": "Pagina",
+    "uai": "UAI",
+    "mandatory_fields": "Campos Obligatorios"
+}
