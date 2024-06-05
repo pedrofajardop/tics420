@@ -15,12 +15,16 @@ export function Login({ setUser }) {
 
     if (name === "" || password === "") {
       setError(true);
+      //ERROR: Log when the user leaves any mandatory fields empty
+      console.error("handleSumit: Mandatory fields are empty")
       return;
     }
     setError(false);
 
     if (typeof setUser === "function") {
       setUser(name);
+      //INFO: Log when a user is successfully set
+      console.info("handleSumit: The user ir successfully set")
     } else {
       console.error("setUser is not a function");
     }
@@ -40,7 +44,11 @@ export function Login({ setUser }) {
                   <input
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      //DEBUG:Log the updated value of name
+                      console.debug("onChange: name =", e.target.value);
+                    }}
                     className="form-control"
                     placeholder={t('username')}
                   />
@@ -50,7 +58,11 @@ export function Login({ setUser }) {
                   <input
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      //DEBUG: Log the updated value of password
+                      console.debug("onChange: password =", e.target.value);
+                    }}
                     className="form-control"
                     placeholder={t('password')}
                   />
