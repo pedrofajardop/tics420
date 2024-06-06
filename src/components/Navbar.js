@@ -36,7 +36,7 @@ const Navbar = () => {
                         </ul>
                         <form className="d-flex" role="search" onSubmit={(e) => {
                             e.preventDefault();
-                            // INFO: Log nivel info para cuando el usuario interactue con el buscador.
+                            // INFO: Log nivel info para cuando el usuario interactue con el buscador. CONTROL 4
                             console.info("User interacts with the search bar."); }}>
                             <input className="form-control me-2" type="search" placeholder={t('search')} aria-label={t('search')} />
                             <button className="btn btn-outline-light" type="submit">
