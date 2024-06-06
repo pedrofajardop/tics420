@@ -28,6 +28,8 @@ export function Login({ setUser }) {
     } else {
       console.error("setUser is not a function");
     }
+    // DEBUG: Log para depurar el estado de las variables name y password 
+    console.debug("handleSubmit: name =", name, ", password =", password);
   };
 
   
