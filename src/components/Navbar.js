@@ -34,10 +34,16 @@ const Navbar = () => {
                                 <a className="nav-link" href="Login" aria-disabled="true">{t('login')}</a>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
+                        <form className="d-flex" role="search" onSubmit={(e) => {
+                            e.preventDefault();
+                            // INFO: Log nivel info para cuando el usuario interactue con el buscador.
+                            console.info("User interacts with the search bar."); }}>
                             <input className="form-control me-2" type="search" placeholder={t('search')} aria-label={t('search')} />
-                            <button className="btn btn-outline-light" type="submit">{t('search')}</button>
+                            <button className="btn btn-outline-light" type="submit">
+                                {t('search')}
+                            </button>
                         </form>
+
                     </div>
                 </div>
             </nav>
