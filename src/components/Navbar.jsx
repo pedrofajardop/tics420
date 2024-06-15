@@ -3,6 +3,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import i18next, { languageResources } from '../i18next';
 import { useTranslation } from 'react-i18next';
 import {Login} from './Login';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import Navbar from '.Navbar.jsx'
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../i18next';
+
+
+test('renders Navbar', () => {
+    render(
+      <I18nextProvider i18n={i18n}>
+        <Navbar />
+      </I18nextProvider>
+    );
+    expect(screen.getByText(/uai/i)).toBeInTheDocument();
+    expect(screen.getByText(/welcome/i)).toBeInTheDocument();
+    expect(screen.getByText(/certifications/i)).toBeInTheDocument();
+    expect(screen.getByText(/login/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
+  });
+
+
 
 const Navbar = () => {
     const { t } = useTranslation();
