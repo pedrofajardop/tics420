@@ -4,6 +4,39 @@ import { useTranslation } from 'react-i18next';
 import './Login.css'; 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
+
+  test('renders Login form', () => {
+    render(<Login setUser={jest.fn()} />);
+    expect(screen.getByPlaceholderText(/username/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument();
+    expect(screen.getByText(/login/i)).toBeInTheDocument();
+  });
+  
+  test('handles input changes', () => { //1
+    render(<Login setUser={jest.fn()} />);
+    const nameInput = screen.getByPlaceholderText(/username/i);
+    const passwordInput = screen.getByPlaceholderText(/password/i);
+    fireEvent.change(nameInput, { target: { value: 'testuser' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    expect(nameInput.value).toBe('testuser');
+    expect(passwordInput.value).toBe('password123');
+  }); 
+  test('displays error when fields are empty', () => {
+    render(<Login setUser={jest.fn()} />);
+    fireEvent.click(screen.getByText(/login/i));
+    expect(screen.getByText(/mandatory_fields/i)).toBeInTheDocument();
+  });
+  test('calls setUser when form is submitted with valid data', () => {
+    const setUserMock = jest.fn();
+    render(<Login setUser={setUserMock} />);
+    fireEvent.change(screen.getByPlaceholderText(/username/i), { target: { value: 'testuser' } });
+    fireEvent.change(screen.getByPlaceholderText(/password/i), { target: { value: 'password123' } });
+    fireEvent.click(screen.getByText(/login/i));
+    expect(setUserMock).toHaveBeenCalledWith('testuser');
+  });
+  
+
 export function Login({ setUser }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
